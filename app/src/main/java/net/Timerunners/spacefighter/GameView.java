@@ -171,8 +171,8 @@ public class GameView extends SurfaceView implements Runnable {
         player.update();
 
         //setting boom outside the screen
-        boom.setX(-250);
-        boom.setY(-250);
+        boom.setX(-350);
+        boom.setY(-350);
 
         for (Star s : stars) {
 
@@ -188,7 +188,7 @@ public class GameView extends SurfaceView implements Runnable {
 
         enemies.update(player.getSpeed());
         //if collision occurs with player
-        if (Rect.intersects(player.getDetectCollision(), friend.getDetectCollision())) {
+        if (Rect.intersects(player.getDetectCollision(), friend.getDetectCollision()) || Rect.intersects(player.getDetectCollision(), enemies.getDetectCollision())) {
 
             //displaying boom at that location
             boom.setX(friend.getX());
@@ -200,6 +200,7 @@ public class GameView extends SurfaceView implements Runnable {
 
             //enemies.setX(-200);
         }
+
 
         else{// the condition where player misses the enemy
 
@@ -263,8 +264,8 @@ public class GameView extends SurfaceView implements Runnable {
         if(Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())){
 
             //displaying the boom at the collision
-            boom.setX(friend.getX());
-            boom.setY(friend.getY());
+            boom.setX(friend.getX()-25);
+            boom.setY(friend.getY()-100);
             //setting playing false to stop the game
             playing = false;
             //setting the isGameOver true as the game is over
@@ -302,8 +303,10 @@ public class GameView extends SurfaceView implements Runnable {
         }
         if (Rect.intersects(player.getDetectCollision(), enemies.getDetectCollision()))
         {
-           enemies.SetX(-250);
-           enemies.SetY(-250);
+            boom.setX(enemies.getX());
+            boom.setY(enemies.getY());
+            enemies.SetX(-250);
+            enemies.SetY(-250);
             score = 0;
         }
 
