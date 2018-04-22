@@ -216,7 +216,7 @@ public class GameView extends SurfaceView implements Runnable {
                     flag = false;
 
                     //if no of Misses is equal to 3, then game is over.
-                    if(countMisses==3){
+                    if(countMisses==20){
 
                         //setting playing false to stop the game.
                         playing = false;
