@@ -260,7 +260,7 @@ public class GameView extends SurfaceView implements Runnable {
         //updating the friend ships coordinates
         friend.update(player.getSpeed());
         //checking for a collision between player and a friend
-        if(Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())){
+        if(Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())|| Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())){
 
             //displaying the boom at the collision
             boom.setX(friend.getX());
