@@ -188,17 +188,17 @@ public class GameView extends SurfaceView implements Runnable {
 
         enemies.update(player.getSpeed());
         //if collision occurs with player
-        if (Rect.intersects(player.getDetectCollision(), enemies.getDetectCollision())) {
+        if (Rect.intersects(player.getDetectCollision(), friend.getDetectCollision())) {
 
             //displaying boom at that location
-            boom.setX(enemies.getX());
-            boom.setY(enemies.getY());
+            boom.setX(friend.getX());
+            boom.setY(friend.getY());
 
 
             //playing a sound at the collision between player and the enemy
             killedEnemysound.start();
 
-            enemies.setX(-200);
+            //enemies.setX(-200);
         }
 
         else{// the condition where player misses the enemy
@@ -260,7 +260,7 @@ public class GameView extends SurfaceView implements Runnable {
         //updating the friend ships coordinates
         friend.update(player.getSpeed());
         //checking for a collision between player and a friend
-        if(Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())|| Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())){
+        if(Rect.intersects(player.getDetectCollision(),friend.getDetectCollision())){
 
             //displaying the boom at the collision
             boom.setX(friend.getX());
@@ -299,6 +299,12 @@ public class GameView extends SurfaceView implements Runnable {
             }
             e.apply();
 
+        }
+        if (Rect.intersects(player.getDetectCollision(), enemies.getDetectCollision()))
+        {
+           enemies.SetX(-250);
+           enemies.SetY(-250);
+            score = 0;
         }
 
     }
